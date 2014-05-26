@@ -46,24 +46,30 @@ public class Main {
 
         for(String resumeURL : resumeURLlist) {
             String addres = resumeURL;
-            String filename = "resume" + resumeURL.substring(32);
-            System.out.println(filename);
+            String filename = "resume" + resumeURL.substring(32) + ".html";
+            //System.out.println(filename);
 
-            /*URL url = new URL(addres);
+            URL url = new URL(addres);
             InputStream inStream = url.openStream();
 
             Scanner in = new Scanner(inStream);
 
-            while (in.hasNextLine()) {
+            /*while (in.hasNextLine()) {
                 list.add(in.nextLine().trim());
-            }*/
-            /*System.out.println(list.get(810));
-            if (!list.get(810).equals("<h3>Резюме не доступно</h3>")) {
+            }
+            System.out.println(list.get(810));*/
+            /*if (!list.get(810).equals("<h3>Резюме не доступно</h3>")) {
                 File f = new File(filename);
                 PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(f)));
                 for(String s : list)
                     out.println(s);
             }*/
+            File f = new File(filename);
+            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(f)));
+            while(in.hasNextLine()) {
+                out.println(in.nextLine());
+                out.flush();
+            }
         }
 
         /*String addres = "http://rabota.e1.ru/resume/p?id=47185";
